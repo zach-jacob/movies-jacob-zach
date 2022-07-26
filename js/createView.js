@@ -7,6 +7,15 @@ import fetchData from "./fetchData.js";
  * @param URI
  */
 
+export function getHeaders() {
+    const token = localStorage.getItem("access_token");
+    return token
+        ? {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + `${token}`}
+        : {'Content-Type': 'application/json'};
+}
+
 export default function createView(URI) {
     // createView must wait for stale token removal before finishing view creation
 
