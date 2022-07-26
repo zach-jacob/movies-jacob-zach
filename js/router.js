@@ -2,14 +2,7 @@ import Home, {HomeEvents} from "./views/Home.js";
 import AboutView, {AboutEvents} from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
-import Login from "./views/Login.js";
-import LoginEvent from "./auth.js";
-import Register from "./views/Register.js"
-import {RegisterEvent} from "./views/Register.js";
-import UserIndex, {UserEvents} from "./views/User.js";
-import Logout, {LogoutEvents} from "./views/Logout.js";
-import DogFactsView, {DogFactsEvents} from "./views/DogFacts.js";
-import QuotesView, {QuotesEvents} from "./views/Quotes.js";
+import MoviesView, {MoviesEvents} from "./views/Movies.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -24,34 +17,6 @@ export default function router(URI) {
             uri: '/',
             title: 'Home',
             viewEvent: HomeEvents
-        },
-        '/logout': {
-            returnView: Logout,
-            state: {},
-            uri: '/',
-            title: 'Logout',
-            viewEvent: LogoutEvents
-        },
-        '/login': {
-            returnView: Login,
-            state: {},
-            uri: '/login',
-            title: "Login",
-            viewEvent: LoginEvent
-        },
-        '/register': {
-            returnView: Register,
-            state: {},
-            uri: '/register',
-            title: 'Register',
-            viewEvent: RegisterEvent
-        },
-        '/users': {
-            returnView: UserIndex,
-            state: {},
-            uri: "/users",
-            title: 'User Info',
-            viewEvent: UserEvents
         },
         '/about': {
             returnView: AboutView,
@@ -72,28 +37,21 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
-        '/dogs': {
-            returnView: DogFactsView,
+        // Need to test to see if movies is working
+        '/movies': {
+            returnView: MoviesView,
             state: {
-                dogFacts: {
-                    url: "https://dogfacts.fulgentcorp.com:12250/v1/facts?random=false&limit=3",
+                allMovies: {
+                    url: "https://fluoridated-changeable-unicorn.glitch.me/movies",
                     headers: {
                         'Content-Type' : 'application/json',
-                        'Authorization' : DOG_QUOTES_API_KEY
                     }
                 }
             },
-            uri: '/dogs',
-            title: 'Dog Facts',
-            viewEvent: DogFactsEvents
+            uri: '/movies',
+            title: 'Movies',
+            viewEvent: MoviesEvents
         },
-        '/quotes': {
-            returnView: QuotesView,
-            state: {},
-            uri: '/quotes',
-            title: 'Historical Quotes',
-            viewEvent: QuotesEvents
-        }
     };
 
     return routes[URI];

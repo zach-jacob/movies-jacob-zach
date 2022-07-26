@@ -1,2 +1,3 @@
 const BACKEND_HOST = '';
-const DOG_QUOTES_API_KEY = "venus-125";
+
+// We'll put whatever new API Keys we use in here.
