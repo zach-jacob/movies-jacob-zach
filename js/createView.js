@@ -6,6 +6,7 @@ import fetchData from "./fetchData.js";
  * Finds the correct route for a given view, builds a loading view, fetches data and builds the final rendered view.
  * @param URI
  */
+
 export default function createView(URI) {
     // createView must wait for stale token removal before finishing view creation
 
@@ -22,7 +23,7 @@ export default function createView(URI) {
 
     // change view to loading screen
     render(null, router('/loading'));
-
+    // Where was getHeaders coming from?
     let request = {
         headers: getHeaders()
     }
