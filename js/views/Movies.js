@@ -41,12 +41,8 @@ export default function MoviesView(props) {
 
       html += `</div> </div>`
       html += `<div className="">
-         <button className="remove-hidden btn btn-outline-secondary">Delete a movie</button>
          <div className="deleteGroup">
-            <select id="selectMenu2" className="hidden1 select">
-               <option>Delete a movie</option>
-            </select>
-            <button id="delete-movie" className="hidden1 btn btn-danger">Delete movie</button>
+            <button id="delete-movie" className="hidden1 btn btn-danger" value=${props.allMovies[i].id}>Delete movie #${props.allMovies[i].id}</button>
          </div>
       </div>`
       html += `</div>`
@@ -63,5 +59,11 @@ export default function MoviesView(props) {
 //Each movie needs a delete button attached to it, that will target by ID.
 // Set up an event onclick, to send out a DELETE request.
 export function MoviesEvents() {
-
+   let deleteButton = document.getElementById("delete-movie")
+   deleteButton.addEventListener("click", (event) =>{
+      fetch(`https://fluoridated-changeable-unicorn.glitch.me/movies/${deleteButton.value}`, {
+         method: 'DELETE',
+      }).then( response => response.json())
+          .then()
+   })
 }
