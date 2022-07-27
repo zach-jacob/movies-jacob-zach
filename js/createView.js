@@ -1,15 +1,23 @@
 import render from './render.js';
 import router from './router.js';
 import fetchData from "./fetchData.js";
-import {getHeaders, removeStaleTokens} from "./auth.js";
 
 /**
  * Finds the correct route for a given view, builds a loading view, fetches data and builds the final rendered view.
  * @param URI
  */
-export default async function createView(URI) {
+
+export function getHeaders() {
+    const token = localStorage.getItem("access_token");
+    return token
+        ? {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + `${token}`}
+        : {'Content-Type': 'application/json'};
+}
+
+export default function createView(URI) {
     // createView must wait for stale token removal before finishing view creation
-    await removeStaleTokens();
 
     let route = router(URI);
 
@@ -24,7 +32,7 @@ export default async function createView(URI) {
 
     // change view to loading screen
     render(null, router('/loading'));
-
+    // Where was getHeaders coming from?
     let request = {
         headers: getHeaders()
     }
