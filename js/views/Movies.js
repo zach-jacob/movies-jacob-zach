@@ -18,18 +18,33 @@ export default function MoviesView(props) {
    let html = ''
    for (let i = 0; i < props.allMovies.length; i++) {
       html += `<div class="movie-card">`
-      html += props.allMovies[i].title
-      html +=`<div> ${props.allMovies[i].genre}`
-      html += `<div> ${props.allMovies[i].rating}`
-      html += `<div> ${props.allMovies[i].director} </div>`
+      if(props.allMovies[i].title === undefined) {
+         html += 'Title : N/A ';
+      }
+      else {html += `Title : ${props.allMovies[i].title}`}
+
+      if(props.allMovies[i].genre === undefined) {
+         html += '<div> Genre : N/A ';
+      }
+      else {html += `<div> Genre : ${props.allMovies[i].genre}`}
+
+      if(props.allMovies[i].rating === undefined) {
+         html += '<div> Rating : N/A ';
+      }
+      else {html += `<div>Rating : ${props.allMovies[i].rating}`}
+
+      if(props.allMovies[i].director === undefined) {
+         html += '<div>Director : N/A </div>';
+      }
+      else {html += `<div>Director : ${props.allMovies[i].director} </div>`}
+
+
       html += `</div> </div> </div>`
    }
 
-let allMovies = document.getElementById('allMovies')
-allMovies.innerHTML = html;
-
     // Need to fill this
    return `<div id="allMovies">
+        ${html}
     </div>
 `
 }
