@@ -1,8 +1,8 @@
 import Home, {HomeEvents} from "./views/Home.js";
-import AboutView, {AboutEvents} from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
 import MoviesView, {MoviesEvents} from "./views/Movies.js";
+import EditMovieView, {EditMovieEvents}  from "./views/EditMovie.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -18,12 +18,12 @@ export default function router(URI) {
             title: 'Home',
             viewEvent: HomeEvents
         },
-        '/about': {
-            returnView: AboutView,
+        '/EditMovie': {
+            returnView: EditMovieView,
             state: {},
-            uri: '/about',
-            title: 'About',
-            viewEvent: AboutEvents
+            uri: '/EditMovie',
+            title: 'Add or Update Movies',
+            viewEvent: EditMovieEvents
         },
         '/error': {
             returnView: Error404,
