@@ -39,7 +39,17 @@ export default function MoviesView(props) {
       else {html += `<div>Director : ${props.allMovies[i].director} </div>`}
 
 
-      html += `</div> </div> </div>`
+      html += `</div> </div>`
+      html += `<div className="">
+         <button className="remove-hidden btn btn-outline-secondary">Delete a movie</button>
+         <div className="deleteGroup">
+            <select id="selectMenu2" className="hidden1 select">
+               <option>Delete a movie</option>
+            </select>
+            <button id="delete-movie" className="hidden1 btn btn-danger">Delete movie</button>
+         </div>
+      </div>`
+      html += `</div>`
    }
 
     // Need to fill this
